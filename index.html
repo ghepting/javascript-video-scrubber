@@ -1,0 +1,98 @@
+<!--//
+/*
+Javascript-video-scrubber Demo
+Created by Gary Hepting and the Dev Team at Emerge Interactive
+Fork, follow and watch on Github at https://github.com/ghepting/javascript-video-scrubber
+Visit Emerge Interctive at http://emergeinteractive.com/
+*/
+//-->
+<html>
+<head>
+	<title>Javascript-video-scrubber Demo</title>
+	<meta http-equiv="description" content="Gary Hepting expands on the methods he and his team at Emerge Interactive used to build the interactive frame-by-frame video scrubbing into the Nike Sustainability Report website to intrigue users and demonstrate creative, engaging interface design." />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+	<script src="./js/javascript-video-scrubber.js" type="text/javascript"></script>
+	<link type="text/css" rel="stylesheet" href="./styles.css" />
+	<script type="text/javascript">
+		<!--//
+
+		totalFrames = 99; // the number of images in the sequence of JPEG files (this could be calculated server-side by scanning the frames folder)
+
+		$(document).ready(function() {
+			resizeAdjustments(); // adjust the size of video placeholder image to fit the screen and keep aspect ratio (zoom crop)
+		});
+
+		//-->
+	</script>
+</head>
+<body onload="resizeAdjustments();" onresize="resizeAdjustments();" onorientationchange="resizeAdjustments();" style="height:2970px;">
+	
+	<!-- overlay grid pattern (optional) -->
+	<div id="overlay"></div>
+	
+	<!-- placeholder image for video (required) -->
+	<img id="video" src="./frames/image_000000.jpg" alt="" />
+	
+	<!-- preload the video frames (required) -->
+	<script type="text/javascript">
+		<!--//
+		// image filenames in frames folder should be "image_000000.jpg" through "image_000098.jpg"
+		for(i = 0; i < totalFrames; i++) { // loop for each image in sequence
+			images[i] =  new Image(); // add image object to array
+			images[i].src = "./frames/image_"+pad(i, 6)+".jpg"; // set the source of the image object
+		}
+		//-->
+	</script>
+
+	<!-- content to be placed on top of video (optional) -->
+	<div id="content">
+		
+		<h1>Javascript-video-scrubber Demo</h1>
+
+		<div class="article">
+
+			<h3>Turn your web page into a responsive video scrubber</h3>
+
+			<p><a href="http://www.nikeresponsibility.com/" target="_blank"><img src="./images/screenshot.png" alt="Nike Sustainability Project Screenshot" style="float:right;margin:0 1em 2em 2em;width:40%;max-width:439px;" /></a> This year we were tasked with creating a unique and engaging user interface for the Nike Sustainability Report website. We had to come up with something that would intrigue and engage its' visitors, push the limits of what the web can do and pave the way for Nike to make an impact on the world about the company's dedication to sustainable business practices.</p>
+
+			<p>With a team of some of the most creative and ambitious UX designers, digital strategists and developers, we began our search for inspiration, collaborating ideas and analyzing what made us all sit back and say "Wow" while we were browsing the Web. There were instantly a few specific technologies that stood out to us all as shoe-ins for Nike (pun intended). Frame-by-frame video (JPEG sequence) scrubbing, parallax effects and of coarse responsive design.</p>
+
+			<p>Once we had our goal and a rough draft of functionality requirements, we began the process of creating our first working prototype. Our road to the initial alpha version was almost a single step. Within a day we had extracted a video, converted each frame to compressed JPEG files and setup our canvas to stretch the first image to completely fill the viewport with a method called zoom cropping. We turned the web page into a virtual timeline and wrote Javascript code that would animate the frames based on how far down the page you traveled. It was a short time between this first initial working prototype and getting the support and approval from the creative and executive teams at Nike. Ambition was high, our goals were clear and we were setting out to build one of the most amazing experiences we could imagine.</p>
+
+			<p>The road was long and we came up with a wide variety of ways we thought might work to animate the video frames before we found something that would work reliably in all of the targeted browsers we were supporting. Whenever you push the limits of technology, you must constantly compromise how you want to do something in order for it to actually work.</p>
+
+			<p>I believe the biggest reason humans have been capable of the technological progress we've made is largely due to the process of sharing knowledge and information with others. Our development team, as well as our executives, share this philosophy and support open-source communities as well. So we decided to create this demonstration to share with you and others that are interested.</p>
+
+			<p>We hope you've enjoyed reading our findings and that you will answer this one question as you're reverse engineering and manipulating this code that we've shared for you.</p>
+
+			<p><em>Note: There are several things to keep in mind as you attempt to modify this example to use your own JPEG image sequence and customize it to fit your implementation:</em></p>
+
+			<ul class="checkmarks">
+				<li>Image optimization is a critical piece of making this work. We ended up resizing each of the images to about 400 pixels tall and compressed them at a target file size of about 15-20KB each.</li>
+				<li>Keep your JPEG sequence fairly short, each JPEG in the sequence is a file that a user has to download in order to display. Users on slower internet connections could have a hard time or be incapable of viewing your page if you don't focus on optimization.</li>
+				<li>Try not to have hard cuts in the video. Seamless image transitions are key to making this effect a smooth experience for visitors. We experimented with a wide array of footage, and recommend you do the same. Once you have your setup configured, it's easy to swap out the frames for new image sequences.M</li>
+				<li>You have to preload your images for this work or you'll experience delay as each new image is called and the browser attempts to display each frame. Because of this, an experience like this can be jarring on a slow computer or through a slow internet connection. Adding conditional configurations for older browsers that reduce the frame-rate (skip every other frame in IE 8 or less for example) and reduce the total number of frames is highly recommended. Taking further steps to detect a user's bandwidth and download speed is also very effective to improve the responsiveness and usability of an application like this.</li>
+				<li>Noscript fallbacks are good practice. Using CSS to size your initial image to fit the viewport ensures although users without Javascript enabled won't see the scrubbing effect, they will be able to use your web page and digest content without issue.</li>
+				<li>Adding a tiling grid pattern overlay on top of your video images is a great way to hide some of the artifacts that are visible after stretching a small, heavily compressed image to fit a large browser viewport. You can also use this image to lighten, darken or colorize the video JPEGs so the content that is on top layers is more legible.</li>
+				<li>That's it for now! Watch, follow, digg (or whatever you do) Emerge Interactive for more useful demonstrations, lessons and code snippets that we'll surely be releasing in the near future.</li>
+			</ul>
+
+		</div>
+
+		<div style="height:20em;"></div>
+		
+		<div id="footer">
+			
+			<h4>This article and demonstration was brought to you by the development team at <a href="http://emergeinteractive.com/">Emerge Interactive</a>.</h4>
+		
+			<h1><a href="http://emergeinteractive.com/"><span>Have you Emerged?</span></a></h1>
+
+		</div>
+
+	</div>
+
+	<!-- something a little extra to fork this project on Github (remove this)-->
+	<a href="https://github.com/ghepting/javascript-video-scrubber"><img style="position:fixed;z-index:2;top:0;right:0;border:0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
+
+</body>
+</html>
