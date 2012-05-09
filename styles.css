@@ -15,6 +15,7 @@ Visit Emerge Interctive at http://emergeinteractive.com/
 body {
 	font-family: Helvetica, Arial, sans-serif;
 	font-size:16px;
+	line-height:150%;
 	color:#fff;
 	text-shadow:3px 3px 3px #000;
 }
@@ -67,12 +68,11 @@ a span {
 	padding: 0 9px 0 7px;
 	line-height: 21px;
 }
-h1, h2, h3, h4 {
+h1, h2, h3 {
 	font-family: 'Russo One', serif;
 }
 p {
 	margin-top:2em;
-	line-height:140%;
 }
 div.article {
 	border-radius:1em;
@@ -131,41 +131,9 @@ img#video {
 	text-align:center;
 }
 #footer h1 a {
-	display: inline-block;
-	height: 60px;
-	padding: 0 0 0 13px;
-	font-family: Helvetica,arial,freesans,clean,sans-serif;
-	font-size: 40px;
-	font-weight: bold;
-	color: #333;
-	text-shadow: 1px 1px 0 #fff;
-	white-space: nowrap;
-	border: 1px solid #d4d4d4;
-	border-radius: 10px;
-	background: #f4f4f4;
-	background: -moz-linear-gradient(#f4f4f4,#ececec);
-	background: -webkit-linear-gradient(#f4f4f4,#ececec);
-	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#f4f4f4',endColorstr='#ececec')";
-	cursor: pointer;
-	user-select: none;
-	-webkit-user-select: none;
-	-moz-user-select: none;
-	text-decoration:none;
+	border:none;
 }
-#footer h1 a:hover, #footer h1 a:focus {
-	color: #fff;
-	text-decoration: none;
-	text-shadow: -1px -1px 0 rgba(0,0,0,0.3);
-	border-color: #518cc6;
-	border-bottom-color: #2a65a0;
-	background: #599bdc;
-	background: -moz-linear-gradient(#599bdc,#3072b3);
-	background: -webkit-linear-gradient(#599bdc,#3072b3);
-	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#599bdc',endColorstr='#3072b3')";
-}
-a span {
-	display: block;
-	height: 50px;
-	padding: 0 19px 0 17px;
-	line-height: 60px;
+#footer h1 a img {
+	position:relative;
+	top:12px;
 }
