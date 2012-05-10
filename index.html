@@ -47,7 +47,7 @@ Visit Emerge Interctive at http://emergeinteractive.com/
 	<!-- content to be placed on top of video (optional) -->
 	<div id="content">
 		
-		<h1>Javascript-video-scrubber Demo</h1>
+		<h1><span style="float:right;font-size:12px;">by <a href="https://github.com/ghepting/" target="_blank">Gary Hepting</a></span> Javascript-video-scrubber Demo</h1>
 
 		<div class="article">
 
@@ -57,15 +57,15 @@ Visit Emerge Interctive at http://emergeinteractive.com/
 
 			<p>This year we were tasked with creating a unique and engaging user interface for the Nike Corporate Responsibility Report website. We had to come up with something that would intrigue and engage its' visitors, push the limits of what the web can do and pave the way for Nike to make an impact on the world about the company's dedication to sustainable business practices.</p>
 
-			<p>With a team of some of the most creative and ambitious UX designers, digital strategists and developers, we began our search for inspiration, collaborating ideas and analyzing what made us all sit back and say "Wow" while we were browsing the Web. There were instantly a few specific technologies that stood out to us all as shoe-ins for Nike (pun intended). Frame-by-frame video (JPEG sequence) scrubbing, parallax effects and of coarse responsive design.</p>
+			<p>With a team of some of the most creative and ambitious UX designers, digital strategists and developers, we began our search for inspiration, collaborating ideas and analyzing what made us all sit back and say "Wow" while we were browsing the Web (such as <a href="http://360langstrasse.sf.tv/page/" target="_blank">http://360langstrasse.sf.tv/page/</a>, <a href="http://kyan.com/" target="_blank">http://kyan.com/</a>, <a href="http://www.socialsummit.cz/en" target="_blank">http://www.socialsummit.cz/en</a> and <a href="http://davegamache.com/" target="_blank">http://davegamache.com/</a>). There were instantly a few specific technologies that stood out to us all as shoe-ins for Nike (pun intended). Frame-by-frame video (JPEG sequence) scrubbing, parallax effects and of coarse responsive design.</p>
 
 			<p>Once we had our goal and a rough draft of functionality requirements, we began the process of creating our first working prototype. Our road to the initial alpha version was almost a single step. Within a day we had extracted a video, converted each frame to compressed JPEG files and setup our canvas to stretch the first image to completely fill the viewport with a method called zoom cropping (zooming to the point of filling a viewport while maintaining aspect ratio). We turned the web page into a virtual timeline and wrote Javascript code that would animate the frames based on how far down the page you traveled. It was a short time between this first initial working prototype and getting the support and approval from the creative and executive teams at Nike. Ambition was high, our goals were clear and we were setting out to build one of the most amazing experiences we could imagine.</p>
 
 			<p>The road was long and we came up with a wide variety of ways we thought might work to animate the video frames before we found something that would work reliably in all of the targeted browsers we were supporting. Whenever you push the limits of technology, you must constantly compromise how you want to do something in order for it to actually work.</p>
 
-			<p>We owe the success of our final version to the information in an article we discovered that was written by Paul Irish (http://paulirish.com/2011/requestanimationframe-for-smart-animating/). With this method of animation “the browser can optimize concurrent animations together into a single reflow and repaint cycle, leading to higher fidelity animation”. Which is exactly what we needed to make this work and reduce CPU load and increase battery life for our users! </p>
+			<p>We owe the success of our final version to the information in an article we discovered that was written by Paul Irish (<a href="http://paulirish.com/2011/requestanimationframe-for-smart-animating/" target="_blank">http://paulirish.com/2011/requestanimationframe-for-smart-animating/</a>). With this method of animation “the browser can optimize concurrent animations together into a single reflow and repaint cycle, leading to higher fidelity animation”. Which is exactly what we needed to make this work and reduce CPU load and increase battery life for our users! </p>
 
-			<p>Here's a sample of the final code:</p>
+			<p>Here's a code snippet:</p>
 
 			<div class="code">
 				<pre>
@@ -102,6 +102,11 @@ function changeFrame() {
 
 			<p>We hope you've enjoyed reading our findings and that you will answer this one question as you're reverse engineering and manipulating this code that we've shared for you.</p>
 
+			<p>
+				<a class="button" href="./javascript-video-scrubber.zip" title="Download Sample Files"><span>Download Sample Files (ZIP)</span></a>   
+				<a class="button" href="https://github.com/ghepting/javascript-video-scrubber" title="Fork on Github"><span>Fork on Github</span></a>
+			</p>
+
 			<h4><em>Note: There are several things to keep in mind as you attempt to modify this example to use your own JPEG image sequence and customize it to fit your implementation:</em></h4>
 
 			<ul class="checkmarks">
@@ -114,13 +119,6 @@ function changeFrame() {
 			</ul>
 
 			<p>That's it for now! Watch, like, follow or digg <a href="http://emergeinteractive.com/">Emerge Interactive</a> for more demonstrations, lessons and code snippets that we'll surely be releasing for your enjoyment.</p>
-
-			<p>
-				<a class="button" href="./javascript-video-scrubber.zip" title="Download Sample Files"><span>Download Sample Files (ZIP)</span></a> 
-				<a class="button" href="https://github.com/ghepting/javascript-video-scrubber" title="Fork on Github"><span>Fork on Github</span></a>
-			</p>
-
-			<p>Gary Hepting</p>
 
 		</div>
 
