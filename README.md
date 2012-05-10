@@ -5,8 +5,9 @@ A demonstration of how to scrub through a video (JPEG sequence) with native wind
 
 
 Created by Gary Hepting and the Dev Team at Emerge Interactive
-Visit Emerge Interctive at http://emergeinteractive.com/
+Visit Emerge Interctive at [http://emergeinteractive.com/]
 
+View the live demo at [http://emergeinteractive.com/demos/javascript-video-scrubber/]
 
 
 OVERVIEW:
