@@ -34,7 +34,6 @@ function changeFrame() {
 	if(images.length > 0 && images[thisStep]) { // if the image exists in the array
 		if(images[thisStep].complete) { // if the image is downloaded and ready
 			if($('#video').attr('src') != images[thisStep].src) { // save overhead...?
-				console.log(images[thisStep].src);
 				$('#video').attr('src',images[thisStep].src); // change the source of our placeholder image
 			}
 		}
