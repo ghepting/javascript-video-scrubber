@@ -25,7 +25,7 @@ Visit Emerge Interctive at http://emergeinteractive.com/
 		//-->
 	</script>
 </head>
-<body onload="resizeAdjustments();" onresize="resizeAdjustments();" onorientationchange="resizeAdjustments();" style="height:2970px;">
+<body onload="resizeAdjustments();" onresize="resizeAdjustments();" onorientationchange="resizeAdjustments();">
 	
 	<!-- overlay grid pattern (optional) -->
 	<div id="overlay"></div>
@@ -51,17 +51,54 @@ Visit Emerge Interctive at http://emergeinteractive.com/
 
 		<div class="article">
 
+			<a href="http://www.nikeresponsibility.com/" target="_blank"><img src="./images/screenshot.png" alt="Nike Sustainability Project Screenshot" style="float:right;margin:2em;width:40%;max-width:439px;" /></a>
+
 			<h3>Turn your web page into a responsive video scrubber</h3>
 
-			<p><a href="http://www.nikeresponsibility.com/" target="_blank"><img src="./images/screenshot.png" alt="Nike Sustainability Project Screenshot" style="float:right;margin:0 1em 2em 2em;width:40%;max-width:439px;" /></a> This year we were tasked with creating a unique and engaging user interface for the Nike Sustainability Report website. We had to come up with something that would intrigue and engage its' visitors, push the limits of what the web can do and pave the way for Nike to make an impact on the world about the company's dedication to sustainable business practices.</p>
+			<p>This year we were tasked with creating a unique and engaging user interface for the Nike Corporate Responsibility Report website. We had to come up with something that would intrigue and engage its' visitors, push the limits of what the web can do and pave the way for Nike to make an impact on the world about the company's dedication to sustainable business practices.</p>
 
 			<p>With a team of some of the most creative and ambitious UX designers, digital strategists and developers, we began our search for inspiration, collaborating ideas and analyzing what made us all sit back and say "Wow" while we were browsing the Web. There were instantly a few specific technologies that stood out to us all as shoe-ins for Nike (pun intended). Frame-by-frame video (JPEG sequence) scrubbing, parallax effects and of coarse responsive design.</p>
 
-			<p>Once we had our goal and a rough draft of functionality requirements, we began the process of creating our first working prototype. Our road to the initial alpha version was almost a single step. Within a day we had extracted a video, converted each frame to compressed JPEG files and setup our canvas to stretch the first image to completely fill the viewport with a method called zoom cropping. We turned the web page into a virtual timeline and wrote Javascript code that would animate the frames based on how far down the page you traveled. It was a short time between this first initial working prototype and getting the support and approval from the creative and executive teams at Nike. Ambition was high, our goals were clear and we were setting out to build one of the most amazing experiences we could imagine.</p>
+			<p>Once we had our goal and a rough draft of functionality requirements, we began the process of creating our first working prototype. Our road to the initial alpha version was almost a single step. Within a day we had extracted a video, converted each frame to compressed JPEG files and setup our canvas to stretch the first image to completely fill the viewport with a method called zoom cropping (zooming to the point of filling a viewport while maintaining aspect ratio). We turned the web page into a virtual timeline and wrote Javascript code that would animate the frames based on how far down the page you traveled. It was a short time between this first initial working prototype and getting the support and approval from the creative and executive teams at Nike. Ambition was high, our goals were clear and we were setting out to build one of the most amazing experiences we could imagine.</p>
 
 			<p>The road was long and we came up with a wide variety of ways we thought might work to animate the video frames before we found something that would work reliably in all of the targeted browsers we were supporting. Whenever you push the limits of technology, you must constantly compromise how you want to do something in order for it to actually work.</p>
 
-			<p>I believe the biggest reason humans have been capable of the technological progress we've made is largely due to the process of sharing knowledge and information with others. Our development team, as well as our executives, share this philosophy and support open-source communities as well. So we decided to create this demonstration to share with you and others that are interested.</p>
+			<p>We owe the success of our final version to the information in an article we discovered that was written by Paul Irish (http://paulirish.com/2011/requestanimationframe-for-smart-animating/). With this method of animation “the browser can optimize concurrent animations together into a single reflow and repaint cycle, leading to higher fidelity animation”. Which is exactly what we needed to make this work and reduce CPU load and increase battery life for our users! </p>
+
+			<p>Here's a sample of the final code:</p>
+
+			<div class="code">
+				<pre>
+window.requestAnimFrame = (function(){
+    return  window.requestAnimationFrame       || 
+    window.webkitRequestAnimationFrame || 
+    window.mozRequestAnimationFrame    || 
+    window.oRequestAnimationFrame      ||  
+    window.msRequestAnimationFrame     || 
+    function( callback ){
+        window.setTimeout(callback, 1000 / 60);
+    };
+})();
+
+(function animloop(){
+    requestAnimFrame(animloop);
+    targetStep = Math.max( Math.round( getYOffset() / 30 ) , 1 ); // what frame to animate to
+    if(targetStep != step ) { step += (targetStep - step) / 5; } // increment the step until we arrive at the target step
+    changeFrame();
+})();
+
+function changeFrame() {
+    var thisStep = Math.round(step); // calculate the frame number
+    if(images.length > 0 && images[thisStep]) { // if the image exists in the array
+        if(images[thisStep].complete) { // if the image is downloaded and ready
+            $('#video').attr('src',images[thisStep].src); // change the source of our placeholder image
+        }
+    }
+}
+				</pre>
+			</div>
+
+			<p>I believe the biggest reason humans have been capable of the technological progress we've made is completely due to the process of sharing knowledge and information with others. The development team and executives here at <a href="http://emergeinteractive.com/">Emerge Interactive</a> share this philosophy and greatly support open-source communities, so we decided to create this demonstration to share with you and others that are interested. And also, a special thanks to Paul Irish for the quick study he provided. That seemingly small article he posted on paulirish.com has brought the capabilities of the web forward by leaps and bounds.</p>
 
 			<p>We hope you've enjoyed reading our findings and that you will answer this one question as you're reverse engineering and manipulating this code that we've shared for you.</p>
 
@@ -74,8 +111,16 @@ Visit Emerge Interctive at http://emergeinteractive.com/
 				<li>You have to preload your images for this work or you'll experience delay as each new image is called and the browser attempts to display each frame. Because of this, an experience like this can be jarring on a slow computer or through a slow internet connection. Adding conditional configurations for older browsers that reduce the frame-rate (skip every other frame in IE 8 or less for example) and reduce the total number of frames is highly recommended. Taking further steps to detect a user's bandwidth and download speed is also very effective to improve the responsiveness and usability of an application like this.</li>
 				<li>Noscript fallbacks are good practice. Using CSS to size your initial image to fit the viewport ensures although users without Javascript enabled won't see the scrubbing effect, they will be able to use your web page and digest content without issue.</li>
 				<li>Adding a tiling grid pattern overlay on top of your video images is a great way to hide some of the artifacts that are visible after stretching a small, heavily compressed image to fit a large browser viewport. You can also use this image to lighten, darken or colorize the video JPEGs so the content that is on top layers is more legible.</li>
-				<li>That's it for now! Watch, follow, digg (or whatever you do) Emerge Interactive for more useful demonstrations, lessons and code snippets that we'll surely be releasing in the near future.</li>
 			</ul>
+
+			<p>That's it for now! Watch, like, follow or digg <a href="http://emergeinteractive.com/">Emerge Interactive</a> for more demonstrations, lessons and code snippets that we'll surely be releasing for your enjoyment.</p>
+
+			<p>
+				<a class="button" href="./javascript-video-scrubber.zip" title="Download Sample Files"><span>Download Sample Files (ZIP)</span></a> 
+				<a class="button" href="https://github.com/ghepting/javascript-video-scrubber" title="Fork on Github"><span>Fork on Github</span></a>
+			</p>
+
+			<p>Gary Hepting</p>
 
 		</div>
 

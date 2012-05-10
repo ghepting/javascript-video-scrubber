@@ -29,11 +29,11 @@ window.requestAnimFrame = (function(){ // reduce CPU consumption, improve perfor
   changeFrame();
 })();
 
-function changeFrame() { // change the frame to the current step
-	var thisStep = Math.round(step);
-	if(images.length > 0 && images[thisStep]) {
-		if(images[thisStep].complete) {
-			$('#video').attr('src',images[thisStep].src);
+function changeFrame() {
+	var thisStep = Math.round(step); // calculate the frame number
+	if(images.length > 0 && images[thisStep]) { // if the image exists in the array
+		if(images[thisStep].complete) { // if the image is downloaded and ready
+			$('#video').attr('src',images[thisStep].src); // change the source of our placeholder image
 		}
 	}
 }

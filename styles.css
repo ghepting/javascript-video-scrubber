@@ -11,13 +11,24 @@ Visit Emerge Interctive at http://emergeinteractive.com/
   font-weight: 400;
   src: local('Russo One'), local('RussoOne-Regular'), url('http://themes.googleusercontent.com/static/fonts/russoone/v1/RO6e96EC9m6OLO0tr7J3z7O3LdcAZYWl9Si6vvxL-qU.woff') format('woff');
 }
-
 body {
 	font-family: Helvetica, Arial, sans-serif;
 	font-size:16px;
 	line-height:150%;
 	color:#fff;
 	text-shadow:3px 3px 3px #000;
+	min-height:3500px;
+}
+div.code {
+	background:rgba(0,0,0,0.65);
+	padding:.5em 2em;
+
+}
+pre {
+	font-size:12px;
+	font-family:Courier;
+	text-shadow:none;
+	overflow:auto;
 }
 a, a:link, a:visited {
 	color:#eee;
@@ -97,7 +108,7 @@ ul.checkmarks li {
 ul.checkmarks li:last-child {
 	border:none;
 	margin-bottom:0;
-	padding-bottom:2em;
+	padding-bottom:0;
 }
 img#video {
 	position:fixed;
